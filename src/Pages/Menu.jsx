@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { menu } from "../Data";
+import { useDispatch, useSelector } from "react-redux";
+import { setResturant } from "../Redux/resturantSlice/resturantSlice";
 
 const Menu = () => {
+  const dispatch = useDispatch();
+
+  const handleClick = (item) => {
+    dispatch(setResturant(item));
+  };
+
   return (
     <>
       <section className="menu" id="menu">
@@ -13,13 +21,13 @@ const Menu = () => {
           {menu.map((item, index) => (
             <div className="box" key={index * Math.random()}>
               <img src={item.img} alt="" />
-              <h3>tasty and healty</h3>
+              <h3>{item.name}</h3>
               <div className="price">
-                $15.99 <span>20.99</span>
+                ${item.newPrice} <span>{item.oldPrice}</span>
               </div>
-              <a href="#" className="btn">
+              <button className="btn" onClick={() => handleClick(item)}>
                 add to cart
-              </a>
+              </button>
             </div>
           ))}
         </div>

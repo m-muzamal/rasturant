@@ -6,16 +6,32 @@ const Footer = () => {
     <>
       <section className="footer">
         <div className="share">
-          <a href="#" className="fab fa-facebook-f">
+          <a
+            href="https://www.facebook.com/sufyan.khalid.54966"
+            target="_blank"
+            className="fab fa-facebook-f"
+          >
             <FaFacebook />
           </a>
-          <a href="#" className="fab fa-twitter">
+          <a
+            href="https://www.instagram.com/sufi_0061?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            target="_blank"
+            className="fab fa-instagram"
+          >
             <FaInstagram />
           </a>
-          <a href="#" className="fab fa-instagram">
+          <a
+            href="https://twitter.com/"
+            target="_blank"
+            className="fab fa-twitter"
+          >
             <FaTwitter />
           </a>
-          <a href="#" className="fab fa-linkedin">
+          <a
+            href="https://api.whatsapp.com/send?phone=923107493529"
+            target="_blank"
+            className="fab fa-whatsapp"
+          >
             <FaWhatsapp />
           </a>
         </div>

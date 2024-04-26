@@ -17,12 +17,15 @@ const Blog = () => {
               </div>
               <div className="content">
                 <a href="#" className="title">
-                  tasty and refreshing spices
+                  {item.title}
                 </a>
-                <span>by admin / 21st may, 2021</span>
+                <span>
+                  by {item.admin} / {item.date}
+                </span>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Non,
-                  dicta.
+                  {item.about.length > 80
+                    ? `${item.about.slice(0, 80)}...`
+                    : item.about}
                 </p>
                 <a href="#" className="btn">
                   read more

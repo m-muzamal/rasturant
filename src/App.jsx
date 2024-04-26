@@ -1,13 +1,13 @@
 import "./App.css";
-import About from "./Components/About.jsx";
-import Blog from "./Components/Blog.jsx";
-import Contact from "./Components/Contact.jsx";
-import Footer from "./Components/Footer.jsx";
-import Home from "./Components/Home";
-import Menu from "./Components/Menu.jsx";
-import Navbar from "./Components/Navbar";
-import Products from "./Components/Products.jsx";
-import Review from "./Components/Review.jsx";
+import About from "./Pages/About.jsx";
+import Blog from "./Pages/Blog.jsx";
+import Contact from "./Pages/Contact.jsx";
+import Footer from "./Pages/Footer.jsx";
+import Home from "./Pages/Home";
+import Menu from "./Pages/Menu.jsx";
+import Navbar from "./Pages/Navbar";
+import Products from "./Pages/Products.jsx";
+import Review from "./Pages/Review.jsx";
 
 function App() {
   return (
