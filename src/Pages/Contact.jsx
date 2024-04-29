@@ -72,7 +72,7 @@ const Contact = () => {
                 name="name"
                 value={input.name}
                 onChange={handleChange}
-                placeholder="name"
+                placeholder="Name"
                 required
               />
             </div>
@@ -85,7 +85,7 @@ const Contact = () => {
                 name="email"
                 value={input.email}
                 onChange={handleChange}
-                placeholder="email"
+                placeholder="Email"
                 required
               />
             </div>
@@ -98,7 +98,7 @@ const Contact = () => {
                 name="message"
                 value={input.message}
                 onChange={handleChange}
-                placeholder="your message..."
+                placeholder="Your message..."
                 required
               />
             </div>

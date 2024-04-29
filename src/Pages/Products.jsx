@@ -25,10 +25,10 @@ const Products = () => {
                 >
                   <FaShoppingCart />
                 </a>
-                <a href="#" className="fas fa-heart">
+                <a className="fas fa-heart">
                   <FaHeart />
                 </a>
-                <a href="#" className="fas fa-eye">
+                <a className="fas fa-eye">
                   <FaEye />
                 </a>
               </div>

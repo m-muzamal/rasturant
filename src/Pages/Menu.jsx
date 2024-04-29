@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { menu } from "../Data";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setResturant } from "../Redux/resturantSlice/resturantSlice";
 
 const Menu = () => {

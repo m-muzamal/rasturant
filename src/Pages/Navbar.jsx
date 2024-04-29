@@ -3,8 +3,10 @@ import Logo from "../assets/logo.png";
 import { FaCartPlus, FaSearch } from "react-icons/fa";
 import { IoMdMenu } from "react-icons/io";
 import CartBox from "../Components/CartBox";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const cartItems = useSelector((state) => state.resturant.value);
   const [search, setSearch] = useState(false);
   const [cartBox, setCartBox] = useState(false);
 
@@ -36,6 +38,9 @@ const Navbar = () => {
             onClick={() => setCartBox(!cartBox)}
           >
             <FaCartPlus />
+            {cartItems.length > 0 && (
+              <p className="notification">{cartItems?.length}</p>
+            )}
           </div>
           <div className="fas fa-bars" id="menu-btn">
             <IoMdMenu />
