@@ -1,4 +1,10 @@
 import React from "react";
+import About from "./About";
+import Menu from "./Menu";
+import Products from "./Products";
+import Review from "./Review";
+import Contact from "./Contact";
+import Blog from "./Blog";
 
 const Home = () => {
   return (
@@ -17,6 +23,12 @@ const Home = () => {
           </a>
         </div>
       </section>
+      <About />
+      <Menu />
+      <Products />
+      <Review />
+      <Contact />
+      <Blog />
     </>
   );
 };

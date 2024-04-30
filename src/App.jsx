@@ -1,27 +1,20 @@
 import "./App.css";
-import About from "./Pages/About.jsx";
-import Blog from "./Pages/Blog.jsx";
-import Contact from "./Pages/Contact.jsx";
+import Dashboard from "./Pages/Dashboard.jsx";
 import Footer from "./Pages/Footer.jsx";
 import Home from "./Pages/Home";
-import Menu from "./Pages/Menu.jsx";
 import Navbar from "./Pages/Navbar";
-import Products from "./Pages/Products.jsx";
-import Review from "./Pages/Review.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <Router>
       <Navbar />
-      <Home />
-      <About />
-      <Menu />
-      <Products />
-      <Review />
-      <Contact />
-      <Blog />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
       <Footer />
-    </>
+    </Router>
   );
 }
 

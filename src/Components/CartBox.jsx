@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { removeResturant } from "../Redux/resturantSlice/resturantSlice";
+import { removeFromCart } from "../Redux/resturantSlice/resturantSlice";
 
 const CartBox = ({ value }) => {
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
-  const cartItem = useSelector((state) => state.resturant.value);
+  const cartItem = useSelector((state) => state.resturant.cart);
 
   useEffect(() => {
     let totalPrice = 0;
@@ -17,7 +17,7 @@ const CartBox = ({ value }) => {
   }, [cartItem]);
 
   const handleClick = (item) => {
-    dispatch(removeResturant(item));
+    dispatch(removeFromCart(item));
   };
 
   return (

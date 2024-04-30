@@ -4,25 +4,35 @@ import { FaCartPlus, FaSearch } from "react-icons/fa";
 import { IoMdMenu } from "react-icons/io";
 import CartBox from "../Components/CartBox";
 import { useSelector } from "react-redux";
+import LoginForm from "../Components/LoginForm";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const cartItems = useSelector((state) => state.resturant.value);
+  const cartItems = useSelector((state) => state.resturant.cart);
   const [search, setSearch] = useState(false);
   const [cartBox, setCartBox] = useState(false);
+  const [popup, setPopup] = useState(false);
+
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+    setPopup(!popup);
+  };
 
   return (
     <>
+      {popup && <LoginForm handleClick={handleClick} />}
       <header className="header">
         <a href="#" className="logo">
           <img src={Logo} alt="" />
         </a>
         <nav className="navbar">
-          <a href="#home">Home</a>
+          <Link to="/">Home</Link>
           <a href="#about">About</a>
           <a href="#menu">Menu</a>
           <a href="#products">Products</a>
           <a href="#review">Review</a>
           <a href="#contact">Contact</a>
+          <a onClick={() => setPopup(handleClick)}>Dashboard</a>
         </nav>
         <div className="icons">
           <div
