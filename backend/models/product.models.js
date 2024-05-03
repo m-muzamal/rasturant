@@ -5,17 +5,24 @@ const productSchema = new mongoose.Schema(
         name: {
             type: String,
             required: true,
+            index: true,
+        },
+        category: {
+            type: String,
+            required: true,
+            index: true
         },
         newPrice: {
             type: Number,
             required: true,
+            default: 0
         },
         oldPrice: {
             type: Number,
-            required: true,
+            default: 0
         },
         image: {
-            type: String,
+            type: String, //cloudnary image
             required: true,
         },
     }, { timestamps: true }
