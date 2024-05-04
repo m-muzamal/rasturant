@@ -18,10 +18,14 @@ const userSchema = new mongoose.Schema(
             unique: true,
             tolowercase: true,
             trim: true,
+            index: true
         },
         password: {
             type: String,
             required: [true, "Password is required"],
+        },
+        refreshToken: {
+            type: String
         }
     }, { timestamps: true }
 )
