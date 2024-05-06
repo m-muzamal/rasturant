@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt, { decode } from "jsonwebtoken";
 import { APIerror } from "../utils/APIerror.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { User } from "../models/user.models.js";
@@ -6,7 +6,9 @@ import { User } from "../models/user.models.js";
 
 export const varifyJWT = asyncHandler(async (req, res, next) => {
     try {
-        const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer", "")
+        console.log(req.cookies)
+        const token = await req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer", "")
+        console.log("Token: ", token)
 
         if (!token) {
             throw new APIerror(401, "Unauthorized access!")
@@ -23,6 +25,6 @@ export const varifyJWT = asyncHandler(async (req, res, next) => {
         req.user = user;
         next()
     } catch (error) {
-        throw new APIerror(401, error?.message || "Invalid access middleware token!")
+        throw new APIerror(401, `Invalid access middleware token! ${error}`)
     }
 }) 
