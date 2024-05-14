@@ -9,7 +9,7 @@ import SignuoForm from "../Components/SignuoForm";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(sessionStorage.getItem("user"));
   const cartItems = useSelector((state) => state.resturant.cart);
   const [signup, setSignup] = useState(false);
   const [cartBox, setCartBox] = useState(false);
@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     if (confirm("Are you sure you want to logout?")) {
-      localStorage.clear();
+      sessionStorage.clear();
       navigate("/");
     }
   };

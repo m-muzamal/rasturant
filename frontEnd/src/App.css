@@ -527,6 +527,21 @@ section {
   padding: 1rem 0;
 }
 
+.checkmark {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  cursor: pointer;
+}
+.checkmark > label {
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .footer {
   background: #13131a;
   text-align: center;

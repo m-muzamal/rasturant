@@ -39,13 +39,13 @@ const LoginForm = ({ handleClick, handleClick1 }) => {
             }
           );
           // console.log(res);
-          localStorage.setItem("user", JSON.stringify(res.data?.data?.user));
+          sessionStorage.setItem("user", JSON.stringify(res.data?.data?.user));
           alert("You are logged in successfully!");
           handleClick();
         } catch (error) {
           console.error(error);
           error && displayErr("Invalid email or password!");
-          localStorage.clear();
+          sessionStorage.clear();
         }
       })();
     }

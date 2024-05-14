@@ -42,7 +42,7 @@ const Dashboard = () => {
           formData
         );
 
-        setTotalProd(totalProd + 1);
+        location.reload();
         alert("Product added successfully!");
         // console.log(res);
       } catch (error) {
@@ -84,6 +84,24 @@ const Dashboard = () => {
     }
   }, [fetch, totalProd]);
 
+  const handleDelet = (_id) => {
+    // console.log(_id);
+
+    try {
+      (async () => {
+        if (confirm("Are you sure you want to delet?")) {
+          const res = await axios.post(
+            `http://localhost:3001/api/v1/products/delete/${_id}`
+          );
+          location.reload();
+          console.log(res);
+        }
+      })();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <section className="dashboard">
       <h1 className="loginForm-title">menu items</h1>
@@ -106,10 +124,7 @@ const Dashboard = () => {
               <td>{item.newPrice}</td>
               <td>{item.oldPrice}</td>
               <td>{item.image.slice(0, 30)}...</td>
-              <td
-                className="del"
-                // onClick={() => dispatch(removeFromMenu(item))}
-              >
+              <td className="del" onClick={() => handleDelet(item._id)}>
                 <MdDelete />
               </td>
             </tr>
@@ -227,10 +242,7 @@ const Dashboard = () => {
               <td>{item.newPrice}</td>
               <td>{item.oldPrice}</td>
               <td>{item.image.slice(0, 30)}...</td>
-              <td
-                className="del"
-                // onClick={() => dispatch(removeFromProd(item))}
-              >
+              <td className="del" onClick={() => handleDelet(item._id)}>
                 <MdDelete />
               </td>
             </tr>

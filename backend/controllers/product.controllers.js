@@ -3,6 +3,8 @@ import { APIResponse } from '../utils/APIResponse.js';
 import { APIerror } from '../utils/APIerror.js';
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from '../utils/cloudnary.js'
+import { Stripe } from "stripe";
+const stripe = new Stripe("sk_test_51PBRzCRp2oHR08Od7gCz1DSbFvEy5wrq8dpdXs5Y7xog2WOnJc59k81r88zbcLUIfCxoueGBSkfQa6PL4Pzvrwfy00YrJrk4dO")
 
 const addProduct = asyncHandler(async (req, res) => {
     const { name, category, newPrice, oldPrice, image } = req.body
@@ -71,4 +73,50 @@ const allProduct = asyncHandler(async (req, res) => {
     }
 })
 
-export { allProduct, addProduct }
+const deleteProduct = asyncHandler(async (req, res) => {
+    try {
+        const { id } = req.params;
+        console.log(id)
+        const product = await Product.findById(id);
+
+        if (!product) {
+            throw new APIerror(404, "Product not found!");
+        }
+
+        await Product.deleteOne({ _id: id })
+
+        return res.status(200).json(
+            new APIResponse(200, {}, "Product deleted successfully!")
+        );
+    } catch (error) {
+        throw new APIerror(404, `Somthing went wrong in deleting product!: ${error}`)
+    }
+});
+
+const checkout = asyncHandler(async (req, res) => {
+    try {
+
+        const { product } = req.body;
+        console.log(product);
+
+        const sessions = await stripe.checkout.sessions.create({
+            line_items: [
+                {
+                    price: product,
+                    quantity: 1,
+                },
+            ],
+            mode: 'subscription',
+            success_url: 'http://localhost:5173',
+            cancel_url: 'http://localhost:5173',
+        });
+
+        res.json({ id: sessions.id })
+    } catch (error) {
+        // console.dir({ error }, { depth: null })
+        console.log(error.message);
+        res.status(400).json({ message: error.message });
+    }
+})
+
+export { allProduct, addProduct, deleteProduct, checkout }
